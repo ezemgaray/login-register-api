@@ -75,16 +75,18 @@ exports.login = async (req, res) => {
     })
   }
 
+  // create User Logged in object
+  const userLoggedIn = {
+    _id: `${user._id}`,
+    email: user.email,
+    name: user.name
+  }
   // Create access token
-  const accessToken = jwt.sign(userLogedIn, config.secret)
+  const accessToken = jwt.sign(userLoggedIn, config.secret)
   // Prepare data object to send response
   const data = {
-    token: accessToken,
-    user: {
-      _id: `${user._id}`,
-      email: user.email,
-      name: user.name
-    }
+    token:  accessToken,
+    user:   userLoggedIn
   }
   // Response
   res.status(200).json({
