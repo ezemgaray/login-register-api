@@ -11,7 +11,7 @@ exports.create = async (req, res) => {
 
   await user.save()
     .then( user => {
-      return res.status(200).json({
+      return res.status(201).json({
         data: `User ${user.email} was successfully registered`, 
         error: null
       })
@@ -19,7 +19,7 @@ exports.create = async (req, res) => {
     .catch(errors => {
       let error = User.getError(errors)
       return res.status(400).json({
-        data: null, 
+        data: null,
         error: error
       })
     })
@@ -56,7 +56,7 @@ exports.login = async (req, res) => {
       value: req.body.email
     }
     return res.status(400).json({
-      data: null, 
+      data: null,
       error: error
     })
   }
@@ -70,7 +70,7 @@ exports.login = async (req, res) => {
       value: ''
     }
     return res.status(400).json({
-      data: null, 
+      data: null,
       error: error
     })
   }
