@@ -32,11 +32,11 @@ const UserSchema = Schema({
 })
 
 /**
- * User Hooks pre
+ * User pre middleware
  */
 UserSchema.pre(
   'save', 
-  async (next) => {
+  async function(next){
 
   const User = model('User')
 
